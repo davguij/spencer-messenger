@@ -24,7 +24,14 @@ module.exports.webhook = (event, context, callback) => {
       return callback('Invalid token');
     }
   } else if (event.method === 'POST') {
-    console.log(event.body);
+    event.body.entry.forEach((entry, index) => {
+      // console.log(entry.id);
+      // console.log(entry.time);
+      // console.log(entry.messaging);
+      entry.messaging.forEach((message) => {
+        console.log(message);
+      });
+    });
     callback(null);
   }
 };
